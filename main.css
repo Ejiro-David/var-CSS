@@ -1,0 +1,27 @@
+:root{
+    --base: red;
+    --spacing: 10px;
+    --blur: 10px
+}
+
+body {
+  margin: 0px;
+  background-color: rgb(194, 156, 118);
+  text-align: center;
+  color: black;
+}
+
+.nav-bar,
+h1 {
+  margin: 50px auto;
+}
+
+.js {
+  color: var(--base);
+}
+
+img {
+  padding: var(--spacing);
+  background: rgb(182, 206, 181);
+  filter: blur(var(--blur));
+}
