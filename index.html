@@ -5,22 +5,46 @@
   </head>
   <body>
 
-    <h1>UPDATE CSS VARIABLES WITH <span class="js">JS</span></h1>
+    <div class="everything">
+        <h1>UPDATE CSS VARIABLES WITH <span class="js">JS</span></h1>
 
-    <div class="controls">
-      <label for="spacing">Spacing</label>
-      <input type="range" name="spacing" value="10" min="10" max="200" surfix="px"/>
-      <label for="blur">Blur</label>
-      <input type="range" name="blur" min="0" max="25" surfix="px" value="10" />
-      <label for="base">Base-Color</label>
-      <input type="color" name="base" value="red"/>
+        <div class="controls nav-bar" id="">
+            <label for="spacing">Spacing</label>
+            <input type="range" name="spacing" value="10" min="10" max="200" data-surfix="px"/>
+            <label for="blur">Blur</label>
+            <input type="range" name="blur" min="0" max="25" data-surfix="px" value="10" />
+            <label for="base">Base-Color</label>
+            <input type="color" name="base" value="red"/>
+        </div>
+
+        <img id='image' src="https://images.pexels.com/photos/3933480/pexels-photo-3933480.jpeg?cs=srgb&dl=pexels-tatiana-syrikova-3933480.jpg&fm=jpg/>
+
+        <div class="nav-bar pic">
+            <label for="pic">Image URL</label>
+            <input type="url" name='pic'id='pic' value="enter url"><button class="url-button">submit</button></input>
+        </div>
     </div>
-
-    <img src="/Users/teerex/Documents/projects/var-CSS/FWtKO84aAAAZAv9.jpg" />
-
-
+    
     <script>
-        const inputs = document.querySelectorAll()
+        const inputs = document.querySelectorAll('.controls input')
+        const imageBtn = document.querySelector('.url-button')
+
+        function handleChange() {
+            let surfix = this.dataset.surfix || ''
+            document.documentElement.style.setProperty(`--${this.name}`, this.value + surfix)
+        }
+
+        function handleURLChange(){
+            let url = document.getElementById('pic').value
+            //console.log(document.getElementById('image').src)
+            document.getElementById('image').src = `${url}`;
+        }
+
+        inputs.forEach(input => input.addEventListener('change', handleChange))
+        inputs.forEach(input => input.addEventListener('mousemove', handleChange))
+        imageBtn.addEventListener('click', handleURLChange)
+
+
     </script>
   </body>
 </html>
